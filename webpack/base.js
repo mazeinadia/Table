@@ -13,6 +13,7 @@ module.exports = (defined = {}) => {
                 'react-router-dom',
                 'react-redux',
                 'redux',
+                'redux-thunk',
                 'redux-logger'
             ],
         },
