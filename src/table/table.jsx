@@ -12,7 +12,6 @@ export default function({header, data, changeFilter}) {
         </tr>)}
     </tbody> : null;
 
-    console.log(changeFilter);
     const change = (value) => {
         if (changeFilter) {
             changeFilter(value);
@@ -22,7 +21,7 @@ export default function({header, data, changeFilter}) {
     return (
         <div>
             <span>Поиск по проектам:</span>
-            <input type="text" onChange={(ev) => changeFilter(ev.target.value)} placeholder="Введите название проекта"/>
+            <input type="text" onChange={(ev) => change(ev.target.value)} placeholder="Введите название проекта"/>
         <table>
             {tableHeader}
             {body}

@@ -18,7 +18,7 @@ export function fetch () {
 
 export function filterTable (filter) {
     return {
-        type: 'FETCH_DATA',
+        type: 'FILTER_CHANGED',
         filter: filter
     }
 }

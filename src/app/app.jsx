@@ -1,7 +1,8 @@
 import React from 'react';
 import Table from '../table/table.jsx';
 import List from '../list/list.jsx';
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux'
 import { uniqueProjects, methodRating, fetch, filterTable } from "./actions/app";
 
 import Rating from '../rating/rating.jsx';
@@ -34,12 +35,11 @@ export default class extends React.Component {
     }
 
     render() {
-
         return (
             <div className="">
                 <Table header={this.props.tableHeader}
                        data={this.props.tableData}
-                       сhangeFilter={(value) => this.props.onTableFilterChange(value)}/>
+                       changeFilter={this.props.onTableFilterChange}/>
                 <List data={this.props.projects}/>
                 <Rating data={this.props.rating}/>
             </div>
