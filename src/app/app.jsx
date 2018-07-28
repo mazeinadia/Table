@@ -2,11 +2,9 @@ import React from 'react';
 import Table from '../table/table.jsx';
 import List from '../list/list.jsx';
 import {connect} from "react-redux";
-import getProjects from "../list/action/list";
-import {fetch} from "../table/actions/table";
-import getRating from '../rating/actions/rating';
+import { uniqueProjects, methodRating, fetch, filterTable } from "./actions/app";
+
 import Rating from '../rating/rating.jsx';
-import tableFilterChange from '../table/actions/filter'
 
 @connect(state => {
     return {
@@ -19,7 +17,7 @@ import tableFilterChange from '../table/actions/filter'
     return {
         dispatch,
         onTableFilterChange: (value) => {
-            dispatch(tableFilterChange(value))
+            dispatch(filterTable(value))
         }
     }
 })
@@ -31,8 +29,8 @@ export default class extends React.Component {
 
     componentWillMount() {
         this.props.dispatch(fetch());
-        this.props.dispatch(getProjects());
-        this.props.dispatch(getRating());
+        this.props.dispatch(uniqueProjects());
+        this.props.dispatch(methodRating());
     }
 
     render() {
@@ -41,7 +39,7 @@ export default class extends React.Component {
             <div className="">
                 <Table header={this.props.tableHeader}
                        data={this.props.tableData}
-                       сhangeFilter={this.props.onTableFilterChange}/>
+                       сhangeFilter={(value) => this.props.onTableFilterChange(value)}/>
                 <List data={this.props.projects}/>
                 <Rating data={this.props.rating}/>
             </div>

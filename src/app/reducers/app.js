@@ -1,8 +1,8 @@
 import InitialState from '../states/initial';
-import UniqueProjects from "../../list/states/uniqueProjects";
-import Table from '../../table/states/table';
-import Rating from '../../rating/states/rating'
-import FilteredTable from '../../table/states/filteredTable';
+import UniqueProjects from "../states/uniqueProjects";
+import Table from '../states/table';
+import Rating from '../states/rating'
+import FilteredTable from '../states/filteredTable';
 
 export default function (state = InitialState, action) {
     switch (action.type) {

@@ -13,16 +13,16 @@ export default function({header, data, changeFilter}) {
     </tbody> : null;
 
     console.log(changeFilter);
-    const change = ({target}) => {
+    const change = (value) => {
         if (changeFilter) {
-            changeFilter(target.value);
+            changeFilter(value);
         }
     };
 
     return (
         <div>
             <span>Поиск по проектам:</span>
-            <input type="text" onChange={change} placeholder="Введите название проекта"/>
+            <input type="text" onChange={(ev) => changeFilter(ev.target.value)} placeholder="Введите название проекта"/>
         <table>
             {tableHeader}
             {body}
