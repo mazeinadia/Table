@@ -3,8 +3,9 @@ import Filter from '../filter/filter.jsx';
 import Table from '../table/table.jsx';
 import List from '../list/list.jsx';
 import { connect } from "react-redux";
-import { uniqueProjects, methodRating, fetch, filterTable } from "./actions/app";
+import { uniqueProjects, methodRating, fetch, filterTable, showContent } from "./actions/app";
 import Rating from '../rating/rating.jsx';
+import Tabs from '../tabs/tabs.jsx';
 import './app.pcss';
 
 @connect(state => {
@@ -12,13 +13,18 @@ import './app.pcss';
         projects: state.projects,
         tableHeader: state.tableHeader,
         tableData: state.tableData,
-        rating: state.rating
+        rating: state.rating,
+        tabs: state.tabs,
+        content: state.content
     };
 }, dispatch => {
     return {
         dispatch,
         onTableFilterChange: (value) => {
             dispatch(filterTable(value))
+        },
+        onContentChoose: (value) => {
+            dispatch(showContent(value))
         }
     }
 })
@@ -37,23 +43,46 @@ export default class extends React.Component {
     }
 
     render() {
+        console.log('app rendered');
         const {
             tableHeader,
             tableData,
             onTableFilterChange,
+            onContentChoose,
             projects,
-            rating
+            rating,
+            tabs,
+            content
         } = this.props;
+
+        console.log(content);
+        let showed = [];
+        switch (content) {
+            case 'projects':
+                showed = [
+                    <h2 key="h21">Проекты</h2>,
+                    <List key="list" data={projects}/>
+                ];
+                break;
+            case 'payments':
+                showed = [
+                    <h2 key="h22">Рейтинг платежных систем</h2>,
+                    <Rating key="rating" data={rating}/>
+                ];
+                break;
+            default :
+                showed =[
+                    <h2 key="h23">Транзакции</h2>,
+                    <Filter key="filter" changeValue={onTableFilterChange}/>,
+                    <Table key="table" header={tableHeader}
+                           data={tableData} className="transactions"/>
+                ];
+        }
+
         return (
             <div className="">
-                <h2>Транзакции</h2>
-                <Filter changeValue={onTableFilterChange}/>
-                <Table header={tableHeader}
-                       data={tableData} className="transactions"/>
-                <h2>Проекты</h2>
-                <List data={projects}/>
-                <h2>Рейтинг платежных систем</h2>
-                <Rating data={rating}/>
+                <Tabs data={tabs} chooseContent={onContentChoose}/>
+                {showed}
             </div>
         )
     }

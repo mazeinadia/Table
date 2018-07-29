@@ -2,22 +2,19 @@ h2 {
   text-align: center;
   padding-top: 20px;
 }
+
+body {
+  margin: 0;
+}
+
 .transactions {
-  > thead > tr > th:first-child {
-    width: 400px;
+  > table > thead > tr > th:first-child {
+    width: 30%!important;
   }
-  > tbody > tr > td:first-child {
-    width: 400px;
+  > table > tbody > tr > td:first-child {
+    width: 30%!important;
   }
 }
 
 @media screen and (max-width: 720px) {
-  .transactions {
-    > thead > tr > th:first-child {
-      width: 200px;
-    }
-    > tbody > tr > td:first-child {
-      width: 200px;
-    }
-  }
 }

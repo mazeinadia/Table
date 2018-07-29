@@ -22,3 +22,10 @@ export function filterTable (filter) {
         filter: filter
     }
 }
+
+export function showContent (content) {
+    return {
+        type: 'SHOW_CONTENT',
+        content: content
+    }
+}

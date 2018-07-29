@@ -44,7 +44,7 @@ export default function ({data}) {
             </thead>
             <tbody>{data.map((item, index) =>
             <tr key={index}
-                style={{backgroundColor: colors[index]}}
+                style={{backgroundColor: colors[index % 8]}}
             onMouseEnter={highlight(index)}
             onMouseLeave={cancelHighlight(index)}>
                 <td>{item.name}</td>

@@ -50,7 +50,7 @@ export default function({data}) {
             const pieces = [];
             pieces.push(addSmallPiece(end-size, 180, index, 1));
             pieces.push(addSmallPiece(end-size+180, size-180, index, 2));
-            return (<div id={index}>
+            return (<div id={index} key="div-chart">
                 {pieces}
             </div>)
         }
