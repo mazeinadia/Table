@@ -1,11 +1,10 @@
 import React from 'react';
-import Filter from '../filter/filter.jsx';
-import Table from '../table/table.jsx';
 import List from '../list/list.jsx';
 import { connect } from "react-redux";
 import { uniqueProjects, methodRating, fetch, filterTable, showContent } from "./actions/app";
 import Rating from '../rating/rating.jsx';
 import Tabs from '../tabs/tabs.jsx';
+import Transactions from '../transactions/transactions.jsx';
 import './app.pcss';
 
 @connect(state => {
@@ -73,8 +72,8 @@ export default class extends React.Component {
             default :
                 showed =[
                     <h2 key="h23">Транзакции</h2>,
-                    <Filter key="filter" changeValue={onTableFilterChange}/>,
-                    <Table key="table" header={tableHeader}
+                    <Transactions key="transactions" onTableFilterChange={onTableFilterChange}
+                                  header={tableHeader}
                            data={tableData} className="transactions"/>
                 ];
         }
