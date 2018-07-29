@@ -1,10 +1,11 @@
 import React from 'react';
+import './list.pcss';
 
 export default function ({data}) {
     const list = data ?
-        <ul>{data.map((item, index) => <li key={index}>{item}</li>)}</ul>
-    : null;
+        data.map((item, index) => <li className="list__item" key={index}>{item}</li>) :
+        null;
     return (
-        <div>{list}</div>
+        <ul className="list">{list}</ul>
     )
 }

@@ -1,0 +1,30 @@
+.rating{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+    min-height: 250px;
+    height: fit-content;
+    padding: 20px 30px;
+    margin: 0 20px;
+
+    > .rating__list {
+        border-collapse: collapse;
+        width: calc(100% - 300px);
+        > tbody > tr {
+            background-blend-mode: lighten;
+        }
+    }
+}
+
+
+@media screen and (max-width: 720px) {
+    .rating{
+        flex-direction: column;
+    }
+    .rating__list {
+        margin-left: 0;
+        margin-top: 30px;
+        width: 100%!important;
+    }
+}

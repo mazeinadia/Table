@@ -1,6 +1,7 @@
 import React from 'react';
+import './table.pcss';
 
-export default function({header, data, changeFilter}) {
+export default function({header, data, className}) {
 
     const tableHeader = header ? <thead>
         <tr>{header.map((item, index) => <th key={index}>{item}</th>)}</tr>
@@ -12,16 +13,8 @@ export default function({header, data, changeFilter}) {
         </tr>)}
     </tbody> : null;
 
-    const change = (value) => {
-        if (changeFilter) {
-            changeFilter(value);
-        }
-    };
-
     return (
-        <div>
-            <span>Поиск по проектам:</span>
-            <input type="text" onChange={(ev) => change(ev.target.value)} placeholder="Введите название проекта"/>
+        <div className={className}>
         <table>
             {tableHeader}
             {body}

@@ -1,0 +1,23 @@
+h2 {
+  text-align: center;
+  padding-top: 20px;
+}
+.transactions {
+  > thead > tr > th:first-child {
+    width: 400px;
+  }
+  > tbody > tr > td:first-child {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .transactions {
+    > thead > tr > th:first-child {
+      width: 200px;
+    }
+    > tbody > tr > td:first-child {
+      width: 200px;
+    }
+  }
+}
