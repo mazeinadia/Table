@@ -41,6 +41,12 @@ export default class extends React.Component {
         dispatch(methodRating());
     }
 
+    componentWillUpdate(nextProps, nextState) {
+        if (this.props.content !== 'transactions' && nextProps.content === 'transactions') {
+            this.props.dispatch(filterTable(''));
+        }
+    }
+
     render() {
         console.log('app rendered');
         const {
